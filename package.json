@@ -1,0 +1,10 @@
+{
+  "name": "everstar-site",
+  "private": true,
+  "description": "Static EVERSTAR marketing site (Framer export, CDN bundles + local assets)",
+  "scripts": {
+    "start": "python3 serve.py",
+    "serve": "python3 serve.py",
+    "build": "python3 tools/build_site.py"
+  }
+}

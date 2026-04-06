@@ -1,0 +1,280 @@
+/**
+ * EVERSTAR — next-layer visuals + cross-page polish (EVERSTAR overlay).
+ * Respects prefers-reduced-motion; navigation unchanged.
+ */
+html.everstar-next {
+  --ever-mx: 0;
+  --ever-my: 0;
+  --ever-accent: #7dd3fc;
+  --ever-accent-2: #a78bfa;
+  --ever-glow: rgba(125, 211, 252, 0.45);
+  --ever-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ever-rhythm: clamp(3rem, 6.5vw, 5rem);
+  --ever-text-muted: rgba(232, 238, 247, 0.78);
+  --ever-pad-x: clamp(1.25rem, 4.5vw, 2.5rem);
+}
+
+html.everstar-next body {
+  isolation: isolate;
+}
+
+#everstar-atmo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+  transform: translateZ(0);
+  background:
+    radial-gradient(ellipse 120% 80% at calc(18% + var(--ever-mx) * 1px) calc(22% + var(--ever-my) * 1px),
+      rgba(125, 211, 252, 0.095),
+      transparent 56%),
+    radial-gradient(ellipse 90% 70% at calc(88% - var(--ever-mx) * 0.55px) calc(78% - var(--ever-my) * 0.55px),
+      rgba(167, 139, 250, 0.075),
+      transparent 52%),
+    radial-gradient(circle at 50% 118%,
+      rgba(56, 189, 248, 0.04),
+      transparent 48%);
+}
+
+#everstar-atmo::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.22;
+  animation: everstar-grain 12s steps(6) infinite;
+}
+
+#everstar-atmo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 24%, rgba(255, 255, 255, 0.26), transparent),
+    radial-gradient(1px 1px at 68% 38%, rgba(255, 255, 255, 0.18), transparent),
+    radial-gradient(1.5px 1.5px at 86% 72%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 48% 88%, rgba(255, 255, 255, 0.16), transparent);
+  background-size: 100% 100%;
+  opacity: 0.3;
+}
+
+@keyframes everstar-grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0.5%, -0.35%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #everstar-atmo::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 809.98px) {
+  #everstar-atmo::before {
+    opacity: 0.12;
+    animation: none;
+  }
+
+  #everstar-atmo::after {
+    opacity: 0.16;
+  }
+}
+
+html.everstar-next.everstar-portfolio #everstar-atmo::after,
+html.everstar-next.everstar-subpage #everstar-atmo::after {
+  opacity: 0.22;
+}
+
+/* --- Main narrative --- */
+html.everstar-next #main {
+  position: relative;
+  z-index: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.everstar-next #main section[id] {
+  scroll-margin-top: clamp(4rem, 11vw, 5.75rem);
+}
+
+html.everstar-next #main section#founder-note,
+html.everstar-next #main section#hero-3 {
+  display: none !important;
+}
+
+html.everstar-next #main section#hero {
+  padding-bottom: var(--ever-rhythm);
+}
+
+html.everstar-next #main section#benefits,
+html.everstar-next #main section#services,
+html.everstar-next #main section#features,
+html.everstar-next #main section#integrations,
+html.everstar-next #main section#reviews {
+  padding-top: calc(var(--ever-rhythm) * 0.5);
+  padding-bottom: calc(var(--ever-rhythm) * 0.5);
+}
+
+html.everstar-next #main section#benefits p,
+html.everstar-next #main section#services p,
+html.everstar-next #main section#features p,
+html.everstar-next #main section#integrations p,
+html.everstar-next #main section#reviews p {
+  line-height: 1.66;
+  letter-spacing: 0.012em;
+  color: var(--ever-text-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  html.everstar-next #main a[href="contact.html"],
+  html.everstar-next #main a[href="portfolio.html"],
+  html.everstar-next #main a[href="everstart.html"],
+  html.everstar-next #main a[href="privacy.html"],
+  html.everstar-next #main a[href="terms.html"],
+  html.everstar-next #main a[href="imprint.html"],
+  html.everstar-next #main a[href="404.html"],
+  html.everstar-next #main a[href="portfolio-works.html"],
+  html.everstar-next #main a[href="./contact.html"],
+  html.everstar-next #main a[href="./portfolio.html"],
+  html.everstar-next #main a[href="./portfolio-works.html"],
+  html.everstar-next #main a[href="./everstart.html"],
+  html.everstar-next #main a[href="./privacy.html"],
+  html.everstar-next #main a[href="./terms.html"],
+  html.everstar-next #main a[href="./imprint.html"],
+  html.everstar-next #main a[href="./404.html"] {
+    transition:
+      color 0.28s var(--ever-ease-out),
+      opacity 0.28s var(--ever-ease-out),
+      transform 0.28s var(--ever-ease-out);
+  }
+
+  html.everstar-next #main a[href="contact.html"]:hover,
+  html.everstar-next #main a[href="portfolio.html"]:hover,
+  html.everstar-next #main a[href="everstart.html"]:hover,
+  html.everstar-next #main a[href="privacy.html"]:hover,
+  html.everstar-next #main a[href="terms.html"]:hover,
+  html.everstar-next #main a[href="imprint.html"]:hover,
+  html.everstar-next #main a[href="404.html"]:hover,
+  html.everstar-next #main a[href="portfolio-works.html"]:hover,
+  html.everstar-next #main a[href="./contact.html"]:hover,
+  html.everstar-next #main a[href="./portfolio.html"]:hover,
+  html.everstar-next #main a[href="./portfolio-works.html"]:hover,
+  html.everstar-next #main a[href="./everstart.html"]:hover,
+  html.everstar-next #main a[href="./privacy.html"]:hover,
+  html.everstar-next #main a[href="./terms.html"]:hover,
+  html.everstar-next #main a[href="./imprint.html"]:hover,
+  html.everstar-next #main a[href="./404.html"]:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+}
+
+html.everstar-next #main a:focus-visible,
+html.everstar-next #main button:focus-visible {
+  outline: 2px solid var(--ever-accent);
+  outline-offset: 3px;
+  transition: outline-offset 0.15s ease;
+}
+
+html.everstar-next ::selection {
+  background: rgba(125, 211, 252, 0.26);
+  color: inherit;
+}
+
+/* --- Secondary pages --- */
+html.everstar-next.everstar-subpage #main div[data-layout-template="true"] {
+  box-sizing: border-box;
+  padding-inline: var(--ever-pad-x);
+}
+
+html.everstar-next.everstar-subpage #main p,
+html.everstar-next.everstar-subpage #main li {
+  line-height: 1.66;
+  letter-spacing: 0.01em;
+}
+
+html.everstar-next.everstar-subpage #main li+li {
+  margin-top: 0.3em;
+}
+
+html.everstar-next.everstar-subpage #main [data-ev-name="headings"] h1,
+html.everstar-next.everstar-subpage #main [data-ev-name="headings"] h2,
+html.everstar-next.everstar-subpage #main [data-ev-name="headings"] h3,
+html.everstar-next.everstar-subpage #main [data-ev-name="Title"] {
+  letter-spacing: -0.022em;
+}
+
+html.everstar-next.everstar-subpage #main [data-ev-name="content" i],
+html.everstar-next.everstar-subpage #main [data-ev-name="Content"],
+html.everstar-next.everstar-subpage #main [data-ev-name="Text Box"],
+html.everstar-next.everstar-subpage #main [data-ev-name="Static text"] {
+  max-width: 62ch;
+  margin-inline: auto;
+}
+
+html.everstar-next.everstar-subpage #main [data-ev-name="404 section"],
+html.everstar-next.everstar-subpage #main [data-ev-name="404"] {
+  text-align: center;
+}
+
+/* --- Portfolio --- */
+html.everstar-next.everstar-portfolio body {
+  background-color: #04070d !important;
+}
+
+html.everstar-next.everstar-portfolio #main [data-ev-root] {
+  box-sizing: border-box;
+  padding-inline: var(--ever-pad-x);
+}
+
+html.everstar-next.everstar-portfolio #main p,
+html.everstar-next.everstar-portfolio #main .ev-text {
+  line-height: 1.66;
+  letter-spacing: 0.01em;
+}
+
+html.everstar-next.everstar-portfolio #main header img,
+html.everstar-next.everstar-portfolio #main [data-ev-name="Logo Wrapper"] img {
+  border-radius: 0;
+  transition: none;
+}
+
+html.everstar-next.everstar-portfolio #main img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  object-fit: cover;
+  transition:
+    transform 0.42s var(--ever-ease-out),
+    filter 0.42s var(--ever-ease-out),
+    box-shadow 0.42s var(--ever-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.everstar-next.everstar-portfolio #main a:hover img {
+    transform: scale(1.018);
+    filter: brightness(1.04);
+    box-shadow:
+      0 14px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(125, 211, 252, 0.08);
+  }
+
+  html.everstar-next.everstar-portfolio #main header a:hover img,
+  html.everstar-next.everstar-portfolio #main [data-ev-name="Logo Wrapper"] a:hover img {
+    transform: none;
+    filter: none;
+    box-shadow: none;
+  }
+}
